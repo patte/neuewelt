@@ -21,7 +21,8 @@ Posts.allow
   remove: (userId, doc) ->
     false
 
-#TODO: attach a schema
+if Meteor.isServer
+  Posts._ensureIndex( { id: 1 }, { unique: true } )
 
 Meteor.methods
   "createPost": (title) ->
