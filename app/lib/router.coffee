@@ -21,10 +21,6 @@ Router.map ->
 
   @route "post",
     path: "post/:id"
-    waitOn: ->
-      [
-        Meteor.subscribe("post", @params.id)
-      ]
 
 if Meteor.isClient	
   Router.onBeforeAction ->

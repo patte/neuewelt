@@ -1,7 +1,13 @@
 <template name="post">
-<div class="post">
-  <div class="page-header">
-    <h1>{{title}}</h1>
-  </div>
+<div id="post">
+  {{#if Template.subscriptionsReady}} 
+  {{#with post}}
+    <div class="page-header">
+      <h1>{{title}}</h1>
+    </div>
+  {{/with}}
+  {{else}}
+    {{> spinner}}
+  {{/if}}
 </div>
 </template>

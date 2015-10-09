@@ -15,10 +15,17 @@ onlyIfUser = ->
 #################################################
 
 Meteor.publish "posts", ->
-  return unless onlyIfAdmin.call(@) 
-  Posts.find()
+  if @userId? and Roles.userIsInRole @userId, 'admin'
+    Posts.find()
+  else
+    Posts.find
+      published: true 
 
 Meteor.publish "post", (id) ->
-  return unless onlyIfAdmin.call(@) 
-  Posts.find(id: id)
-
+  if @userId? and Roles.userIsInRole @userId, 'admin'
+    Posts.find
+      id: id
+  else
+    Posts.find
+      published: true 
+      id: id

@@ -26,8 +26,16 @@ if Meteor.isServer
 
 Meteor.methods
   "createPost": (title) ->
+    checkIfAdmin()
+    check(title, String)
+
+    id = toSlug(title)
+    post = Posts.findOne
+      id: id
+    throw new Meteor.Error(403, "a post with this title already exists") if post?
+    
     _id = Posts.insert
       title: title
-      id: toSlug(title)
+      id: id
       creatorId: Meteor.userId()
-    _id
+    id
