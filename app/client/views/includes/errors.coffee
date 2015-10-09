@@ -3,6 +3,7 @@ Template.errors.helpers
     Errors.find()
 
 Template.error.rendered = ->
+  window.scrollTo(0,0)
   error = @data
   Meteor.defer ->
     Errors.update error._id,
