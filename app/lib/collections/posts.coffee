@@ -1,4 +1,4 @@
-class @Posts
+class @Post
   constructor: (doc) ->
     _.extend this, doc
 
