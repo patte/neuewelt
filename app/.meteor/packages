@@ -1,0 +1,43 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+coffeescript
+accounts-password
+alanning:roles
+#aldeed:autoform
+aldeed:collection2
+drskullster:bootstrap
+jabbslad:basic-auth
+less
+iron:router
+ian:accounts-ui-bootstrap-3
+sacha:spin
+matb33:collection-hooks
+fortawesome:fontawesome
+momentjs:moment
+mizzao:user-status
+workman:x-editable-reactive-template
+frozeman:template-var
+reactive-var
+mizzao:timesync
+summernote:summernote
+d4nyll:epic
+chuangbo:marked
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
+joshowens:accounts-entry-1.2
