@@ -20,3 +20,16 @@ Template.post.events
       throwError error if error?
       Session.set 'editingCrumbId', _id
     false
+
+  'click .editCrumb': (evt) ->
+    Session.set 'editor-markdown', @content
+    Session.set 'editingCrumbId', @_id
+    false
+
+  'click .saveCrumb': (evt) ->
+    md = Session.get('editor-markdown')
+    Meteor.call "saveCrumb", @_id, md, (error, id)->
+      throwError error if error?
+      Session.set 'editingCrumbId', null
+      false
+

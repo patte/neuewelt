@@ -9,6 +9,15 @@
       <div class="panel panel-default">
         <div class="panel-collapse">
           <div class="panel-body">
+            {{#if crumbIsEditing}}
+              <div class="editor-container">
+                <main class="editor">
+                  <section class="entry-container">
+                    {{> GhostEditor content}}
+                  </section>
+                </main>
+              </div>
+              {{else}}
               {{#if content}}
                 {{#markdown}}
                   {{content}}
@@ -16,6 +25,19 @@
               {{else}}
                 <small>no content</small>
               {{/if}}
+            {{/if}}
+
+            {{#if isInRole 'admin'}}
+              <div>
+                {{#if crumbIsEditing}}
+                  <button type="button" class="btn btn-default saveCrumb">
+                    Save
+                  </button>
+                {{else}}
+                  <i class="fa fa-lg fa-edit editCrumb"></i>
+                {{/if}}
+              </div>
+            {{/if}}
           </div>
         </div>
       </div>
