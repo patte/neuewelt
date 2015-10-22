@@ -13,6 +13,15 @@
             {{#each posts}}
               <a href="/post/{{slug}}" class="list-group-item">
                 {{title}}
+                {{#if isInRole 'admin'}}
+                  <span class="pull-right">
+                    {{#if published}}
+                      <i class="fa fa-lg fa-check-square-o togglePublish"></i>
+                    {{else}}
+                      <i class="fa fa-lg fa-square-o togglePublish"></i>
+                    {{/if}}
+                  </span>
+                {{/if}}
               </a>
             {{/each}}
           </div>

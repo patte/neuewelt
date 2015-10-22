@@ -21,5 +21,10 @@ Template.home.events
     evt.target.title.blur()
     false
 
+  'click .togglePublish': (evt) ->
+    evt.preventDefault()
+    evt.stopPropagation()
+    Meteor.call "togglePublishOfPost", @_id, (error)->
+      throwError error if error?
+    false
 
-    

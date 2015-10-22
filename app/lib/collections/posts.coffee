@@ -41,3 +41,15 @@ Meteor.methods
       creatorId: Meteor.userId()
       published: false
     slug
+
+
+  'togglePublishOfPost': (postId) ->
+    checkIfAdmin()
+
+    post = Posts.findOne
+      _id: postId
+    throw new Meteor.Error(403, "post not found") unless post?
+
+    Posts.update postId,
+      $set: 
+        published: !post.published
