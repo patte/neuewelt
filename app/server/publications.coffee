@@ -21,11 +21,12 @@ Meteor.publish "posts", ->
     Posts.find
       published: true 
 
-Meteor.publish "post", (id) ->
+Meteor.publish "post", (slug) ->
   if @userId? and Roles.userIsInRole @userId, 'admin'
     Posts.find
-      id: id
+      slug: slug
   else
     Posts.find
       published: true 
-      id: id
+      slug: slug
+

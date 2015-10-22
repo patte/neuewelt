@@ -20,7 +20,11 @@ Router.map ->
     path: "home"
 
   @route "post",
-    path: "post/:id"
+    path: "post/:slug"
+    waitOn: ->
+      Meteor.subscribe('post', @params.slug)
+    data: ->
+      Posts.findOne {slug: @params.slug}
 
 if Meteor.isClient	
   Router.onBeforeAction ->

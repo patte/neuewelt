@@ -22,20 +22,22 @@ Posts.allow
     false
 
 if Meteor.isServer
-  Posts._ensureIndex( { id: 1 }, { unique: true } )
+  Posts._ensureIndex( { slug: 1 }, { unique: true } )
 
 Meteor.methods
-  "createPost": (title) ->
+  'createPost': (title) ->
     checkIfAdmin()
+    title = null if title? and title.length is 0
     check(title, String)
 
-    id = toSlug(title)
+    slug = toSlug(title)
     post = Posts.findOne
-      id: id
+      slug: slug
     throw new Meteor.Error(403, "a post with this title already exists") if post?
     
     _id = Posts.insert
       title: title
-      id: id
+      slug: slug
       creatorId: Meteor.userId()
-    id
+      published: false
+    slug

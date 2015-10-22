@@ -3,18 +3,23 @@ Template.home.onCreated ->
 
 Template.home.helpers
   posts: ->
-    Posts.find()
-    
+    if Roles.userIsInRole(Meteor.user(), 'admin')
+      Posts.find()
+    else
+      Posts.find
+        published: true
+
 Template.home.events
   'submit #createPost': (evt) ->
     evt.preventDefault()
     title = evt.target.title.value
-    Meteor.call "createPost", title, (error, id)->
+    Meteor.call "createPost", title, (error, slug)->
       throwError error if error?
       Router.go 'post',
-        id: id
+        slug: slug
     evt.target.title.value = ""
     evt.target.title.blur()
+    false
 
 
     
