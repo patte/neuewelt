@@ -1,5 +1,22 @@
 Template.post.onCreated ->
+  @subscribe("crumbsForPost", @data._id)
 
 Template.post.helpers
   post: ->
     @
+
+  crumbs: ->
+    Crumbs.find
+      postId: @_id
+
+  #this crumb
+  crumbIsEditing: ->
+    Session.get('editingCrumbId') is @_id
+
+Template.post.events
+  'submit #createCrumb': (evt) ->
+    evt.preventDefault()
+    Meteor.call "createCrumb", @_id, (error, _id)->
+      throwError error if error?
+      Session.set 'editingCrumbId', _id
+    false

@@ -5,6 +5,34 @@
     <div class="page-header">
       <h1>{{title}}</h1>
     </div>
+    {{#each crumbs}}
+      <div class="panel panel-default">
+        <div class="panel-collapse">
+          <div class="panel-body">
+              {{#if content}}
+                {{#markdown}}
+                  {{content}}
+                {{/markdown}}
+              {{else}}
+                <small>no content</small>
+              {{/if}}
+          </div>
+        </div>
+      </div>
+    {{/each}}
+    {{#if isInRole 'admin'}}
+      <div class="row"> 
+        <div class="col-xs-12 col-md-4"> 
+          <div class="admin">
+            <form id="createCrumb">
+              <button type="submit" class="btn btn-default">
+                Create Crumb <i class="fa fa-plus"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {{/if}}
   {{/with}}
   {{else}}
     {{> spinner}}
