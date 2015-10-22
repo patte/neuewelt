@@ -26,12 +26,8 @@ Router.map ->
     data: ->
       Posts.findOne {slug: @params.slug}
 
-if Meteor.isClient	
-  Router.onBeforeAction ->
-    clearErrors()
-    @next()
-    return
 
+if Meteor.isClient	
   AccountsEntry.config
     homeRoute: '/home' #redirect to this path after sign-out
     dashboardRoute: '/home'  #redirect to this path after sign-in
