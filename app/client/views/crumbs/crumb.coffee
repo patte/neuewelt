@@ -2,6 +2,9 @@ Template.crumb.helpers
   isEditing: ->
     Session.get('editingCrumbId') is @_id
 
+  content: ->
+    @content or ""
+
 Template.crumb.events
   'click .edit': (evt) ->
     Session.set 'editingCrumbId', @_id
