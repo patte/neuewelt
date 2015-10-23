@@ -39,3 +39,17 @@ Meteor.methods
       creatorId: Meteor.userId()
       index: index
     _id
+
+
+  'saveCrumb': (crumbId, markdown) ->
+    checkIfAdmin()
+    check(crumbId, String)
+    markdown = null if markdown? and markdown.length is 0
+    check(markdown, String)
+
+    crumb = Crumbs.findOne
+      _id: crumbId
+    throw new Meteor.Error(403, "crumb with _id #{crumbId} not found") unless crumb?
+
+    Crumbs.update crumbId,	
+      $set: {content: markdown}
