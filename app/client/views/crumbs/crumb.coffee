@@ -24,3 +24,9 @@ Template.crumb.events
     Session.set 'editingCrumbId', null
     false
 
+Template.crumbContent.onRendered ->
+  @$('.crumb-content').readmore('destroy')
+  @$('.crumb-content').readmore()
+
+Template.crumbContent.onDestroyed ->
+  @$('.crumb-content').readmore('destroy')
