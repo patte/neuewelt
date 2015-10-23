@@ -13,3 +13,8 @@ Template.crumb.events
       throwError error if error?
       Session.set 'editingCrumbId', null
     false
+
+  'click .cancel': (evt) ->
+    Session.set 'editingCrumbId', null
+    false
+
