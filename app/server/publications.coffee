@@ -31,10 +31,5 @@ Meteor.publish "post", (slug) ->
       slug: slug
 
 Meteor.publish "crumbsForPost", (postId) ->
-  if @userId? and Roles.userIsInRole @userId, 'admin'
-    Crumbs.find
-      postId: postId
-  else
-    Crumbs.find
-      postId: postId
-      published: true 
+  Crumbs.find
+    postId: postId
