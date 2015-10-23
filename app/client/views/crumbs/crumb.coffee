@@ -12,6 +12,9 @@ Template.crumb.events
 
   'click .save': (evt) ->
     md = Session.get('editor-markdown')
+    if !md? #no changes
+      Session.set 'editingCrumbId', null
+      return
     Meteor.call "saveCrumb", @_id, md, (error, id)->
       throwError error if error?
       Session.set 'editingCrumbId', null
