@@ -53,3 +53,8 @@ Meteor.methods
 
     Crumbs.update crumbId,	
       $set: {content: markdown}
+
+  'removeCrumb': (crumbId) ->
+    checkIfAdmin()
+    check(crumbId, String)
+    Crumbs.remove crumbId

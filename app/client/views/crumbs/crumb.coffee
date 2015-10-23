@@ -24,6 +24,13 @@ Template.crumb.events
     Session.set 'editingCrumbId', null
     false
 
+  'click .remove': (evt) ->
+    if confirm("are you sure?")
+      Meteor.call "removeCrumb", @_id, (error, id)->
+        throwError error if error?
+    false
+
+
 Template.crumbContent.onRendered ->
   @$('.crumb-content').readmore('destroy')
   @$('.crumb-content').readmore()
