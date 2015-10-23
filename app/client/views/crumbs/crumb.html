@@ -1,0 +1,40 @@
+<template name="crumb">
+<div class="panel panel-default">
+  <div class="panel-collapse">
+    <div class="panel-body">
+      {{#if isEditing}}
+        <div class="editor-container">
+          <main class="editor">
+            <section class="entry-container">
+              {{> GhostEditor content}}
+            </section>
+          </main>
+        </div>
+        {{else}}
+        {{#if content}}
+          {{#markdown}}
+            {{content}}
+          {{/markdown}}
+        {{else}}
+          <small>no content</small>
+        {{/if}}
+      {{/if}}
+
+      {{#if isInRole 'admin'}}
+        <div>
+          {{#if isEditing}}
+            <button type="button" class="btn btn-default save">
+              Save
+            </button>
+            <button type="button" class="btn btn-warning reset">
+              Reset
+            </button>
+          {{else}}
+            <i class="fa fa-lg fa-edit edit"></i>
+          {{/if}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>
+</template>
