@@ -28,3 +28,8 @@ Template.home.events
       throwError error if error?
     false
 
+  'click .remove': (evt) ->
+    if confirm("are you sure?")
+      Meteor.call "removePost", @_id, (error)->
+        throwError error if error?
+    false

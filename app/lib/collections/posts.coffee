@@ -45,3 +45,10 @@ Meteor.methods
     Posts.update postId,
       $set: 
         published: !post.published
+
+  'removePost': (postId) ->
+    checkIfAdmin()
+    check(postId, String)
+    Posts.remove postId
+    Crumbs.remove
+      postId: postId

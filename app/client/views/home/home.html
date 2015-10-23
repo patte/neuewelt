@@ -15,10 +15,11 @@
                 {{title}}
                 {{#if isInRole 'admin'}}
                   <span class="pull-right">
+                    <i class="fa fa-lg fa-trash remove"></i>&nbsp;&nbsp;
                     {{#if published}}
                       <i class="fa fa-lg fa-check-square-o togglePublish"></i>
                     {{else}}
-                      <i class="fa fa-lg fa-square-o togglePublish"></i>
+                      <i class="fa fa-lg fa-square-o togglePublish" style="margin-right:2px;"></i>
                     {{/if}}
                   </span>
                 {{/if}}
