@@ -13,14 +13,6 @@ class @Post
 Posts.before.insert BeforeInsertTimestampHook
 Posts.before.update BeforeUpdateTimestampHook
 
-Posts.allow
-  insert: (userId, doc) ->
-    false
-  update: (userId, doc, fieldNames, modifier) ->
-    Roles.userIsInRole(userId, 'admin')
-  remove: (userId, doc) ->
-    false
-
 if Meteor.isServer
   Posts._ensureIndex( { slug: 1 }, { unique: true } )
 

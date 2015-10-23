@@ -13,14 +13,6 @@ class @Crumb
 Crumbs.before.insert BeforeInsertTimestampHook
 Crumbs.before.update BeforeUpdateTimestampHook
 
-Crumbs.allow
-  insert: (userId, doc) ->
-    false
-  update: (userId, doc, fieldNames, modifier) ->
-    Roles.userIsInRole(userId, 'admin')
-  remove: (userId, doc) ->
-    false
-
 Meteor.methods
   'createCrumb': (postId) ->
     checkIfAdmin()
