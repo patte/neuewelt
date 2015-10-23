@@ -8,25 +8,23 @@
         </section>
       </main>
     </div>
-    {{else}}
-    {{#if content}}
-      {{> crumbContent}}
-    {{else}}
-      <small>no content</small>
-    {{/if}}
-  {{/if}}
-
-  {{#if isInRole 'admin'}}
-    <div>
-      {{#if isEditing}}
-        <button type="button" class="btn btn-default save">
-          Save
-        </button>
-        <button type="button" class="btn btn-warning cancel">
-          Cancel
-        </button>
+    <button type="button" class="btn btn-default save">
+      Save
+    </button>
+    <button type="button" class="btn btn-warning cancel">
+      Cancel
+    </button>
+  {{else}}
+    <div class="container">
+      {{#if content}}
+        {{> crumbContent}}
       {{else}}
-        <i class="fa fa-lg fa-edit edit"></i>
+        <small>no content</small>
+      {{/if}}
+      {{#if isInRole 'admin'}}
+        <div class="controls">
+          <i class="fa fa-lg fa-edit text-primary hoverOpaque cursorPointer edit"></i>
+        </div>
       {{/if}}
     </div>
   {{/if}}

@@ -2,25 +2,21 @@
 <div id="post">
   {{#if Template.subscriptionsReady}} 
   {{#with post}}
-    <div class="page-header">
+    <div class="page-header container">
       <h1>{{title}}</h1>
     </div>
-    {{#each crumbs}}
-      {{> crumb}}
-    {{/each}}
+    <div class="crumbs">
+      {{#each crumbs}}
+        {{> crumb}}
+      {{/each}}
+    </div>
     {{#if isInRole 'admin'}}
-      <div class="row"> 
-        <div class="col-xs-12 col-md-4"> 
-          <br>
-          <div class="admin">
-            <form id="createCrumb">
-              <button type="submit" class="btn btn-default">
-                Create Crumb <i class="fa fa-plus"></i>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+      <br>
+      <form id="createCrumb">
+        <button type="submit" class="btn btn-default">
+          Create Crumb <i class="fa fa-plus"></i>
+        </button>
+      </form>
     {{/if}}
   {{/with}}
   {{else}}

@@ -27,7 +27,7 @@
           </div>
           {{#if isInRole 'admin'}}
             <div class="row">
-              <div class="col-xs-12 col-md-4">
+              <div class="col-xs-12 col-md-6">
                 <form id="createPost">
                   <input type="text" class="form-control" name="title" placeholder="title">
                   <button type="submit" class="btn btn-default">
@@ -43,6 +43,7 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
+          <br>
           {{#if isInRole 'admin'}}
           <a href="/sign-out">sign out</a>
           {{else}}
