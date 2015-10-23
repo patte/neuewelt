@@ -8,6 +8,8 @@ Template.post.helpers
   crumbs: ->
     Crumbs.find
       postId: @_id
+    ,
+      sort: { index: 1 }
 
 Template.post.events
   'submit #createCrumb': (evt) ->
