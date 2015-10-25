@@ -16,6 +16,11 @@ Router.map ->
     onBeforeAction: (pause)->
       @redirect "/home"
 
+  @route "users",
+    path: "users"
+    waitOn: ->
+      Meteor.subscribe('users')
+
   @route "home",
     path: "home"
 
