@@ -26,12 +26,15 @@ Meteor.methods
     post = Posts.findOne
       slug: slug
     throw new Meteor.Error(403, "a post with this title already exists") if post?
+
+    index = Posts.find().count()
     
     _id = Posts.insert
       title: title
       slug: slug
       creatorId: Meteor.userId()
       published: false
+      index: index
     slug
 
 
@@ -45,6 +48,43 @@ Meteor.methods
     Posts.update postId,
       $set: 
         published: !post.published
+
+  'decPostIndex': (postId) ->
+    checkIfAdmin()
+
+    post = Posts.findOne
+      _id: postId
+    throw new Meteor.Error(403, "post not found") unless post?
+
+    return if post.index is 0
+
+    Posts.update
+      index: post.index-1
+    ,
+      $inc: {index: 1} 
+
+    Posts.update postId,
+      $inc: {index: -1} 
+
+
+  'incPostIndex': (postId) ->
+    checkIfAdmin()
+
+    post = Posts.findOne
+      _id: postId
+    throw new Meteor.Error(403, "post not found") unless post?
+
+    numPosts = Posts.find().count()
+    return if post.index is numPosts-1
+
+    Posts.update
+      index: post.index+1
+    ,
+      $inc: {index: -1} 
+
+    Posts.update postId,
+      $inc: {index: 1} 
+
 
   'removePost': (postId) ->
     checkIfAdmin()

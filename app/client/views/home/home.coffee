@@ -4,10 +4,13 @@ Template.home.onCreated ->
 Template.home.helpers
   posts: ->
     if Roles.userIsInRole(Meteor.user(), 'admin')
-      Posts.find()
+      Posts.find {},
+        sort: {index: 1}
     else
       Posts.find
         published: true
+      ,
+        sort: {index: 1}
 
 Template.home.events
   'submit #createPost': (evt) ->
@@ -25,6 +28,20 @@ Template.home.events
     evt.preventDefault()
     evt.stopPropagation()
     Meteor.call "togglePublishOfPost", @_id, (error)->
+      throwError error if error?
+    false
+
+  'click .moveUp': (evt) ->
+    evt.preventDefault()
+    evt.stopPropagation()
+    Meteor.call "decPostIndex", @_id, (error)->
+      throwError error if error?
+    false
+
+  'click .moveDown': (evt) ->
+    evt.preventDefault()
+    evt.stopPropagation()
+    Meteor.call "incPostIndex", @_id, (error)->
       throwError error if error?
     false
 
