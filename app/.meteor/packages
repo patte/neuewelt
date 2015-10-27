@@ -19,12 +19,9 @@ matb33:collection-hooks
 fortawesome:fontawesome
 momentjs:moment
 mizzao:user-status
-workman:x-editable-reactive-template
 frozeman:template-var
 reactive-var
 mizzao:timesync
-summernote:summernote
-d4nyll:epic
 chuangbo:marked
 standard-minifiers
 meteor-base
