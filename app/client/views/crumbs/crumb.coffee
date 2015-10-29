@@ -36,6 +36,7 @@ Template.crumbContent.onRendered ->
   @$('.crumb-content').readmore
     moreLink: '<a href="#">See more</a>'
     lessLink: '<a href="#">See less</a>'
+    collapsedHeight: 215
 
 Template.crumbContent.onDestroyed ->
   @$('.crumb-content').readmore('destroy')
