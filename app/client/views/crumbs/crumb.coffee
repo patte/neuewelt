@@ -32,6 +32,9 @@ Template.crumb.events
 
 
 Template.crumbContent.onRendered ->
+  #add bootstrap class table to tables
+  @$('table').addClass('table')
+  #init readmore
   @$('.crumb-content').readmore('destroy')
   @$('.crumb-content').readmore
     moreLink: '<a href="#">See more</a>'
