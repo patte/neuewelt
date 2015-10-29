@@ -38,6 +38,28 @@ Meteor.methods
     slug
 
 
+  'changePostTitle': (postId, title) ->
+    checkIfAdmin()
+    check(postId, String)
+    title = null if title? and title.length is 0
+    check(title, String)
+
+    post = Posts.findOne postId
+    throw new Meteor.Error(403, "a post with the claimed _id can't be found.") unless post?
+
+    slug = toSlug(title)
+    anotherPost = Posts.findOne
+      _id: {$ne: postId}
+      slug: slug
+    throw new Meteor.Error(403, "a post with this title already exists") if anotherPost?
+
+    Posts.update postId,
+      $set:
+        title: title
+        slug: slug
+    slug
+
+
   'togglePublishOfPost': (postId) ->
     checkIfAdmin()
 

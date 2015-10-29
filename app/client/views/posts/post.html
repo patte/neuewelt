@@ -1,10 +1,15 @@
+<!-- we need this extra template to get a onRendered callback when the title is inserted. see post.coffee -->
+<template name="postTitle">
+<div class="page-header container">
+	<h1>{{title}}</h1>
+</div>
+</template>
+
 <template name="post">
 <div id="post">
   {{#if Template.subscriptionsReady}} 
   {{#with post}}
-    <div class="page-header container">
-      <h1>{{title}}</h1>
-    </div>
+    {{> postTitle}}
     <div class="crumbs">
       {{#each crumbs}}
         {{> crumb}}
