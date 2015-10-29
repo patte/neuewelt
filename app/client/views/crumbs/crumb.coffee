@@ -33,7 +33,9 @@ Template.crumb.events
 
 Template.crumbContent.onRendered ->
   @$('.crumb-content').readmore('destroy')
-  @$('.crumb-content').readmore()
+  @$('.crumb-content').readmore
+    moreLink: '<a href="#">See more</a>'
+    lessLink: '<a href="#">See less</a>'
 
 Template.crumbContent.onDestroyed ->
   @$('.crumb-content').readmore('destroy')
