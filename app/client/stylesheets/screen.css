@@ -6064,8 +6064,8 @@ nav li a:before {
   right: 0;
   bottom: 0;
   font-family: Inconsolata, monospace;
-  font-size: 1.4em;
-  line-height: 1.3em;
+  font-size: 1.1em; /* changed by patte */
+  line-height: 1.2em; /* changed by patte */
   color: #3c4043;
 }
 /* line 232, ../scss/layouts/_editor.scss */
