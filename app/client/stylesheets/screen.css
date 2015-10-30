@@ -6239,49 +6239,45 @@ nav li a:before {
 /* =============================================================================
    Post Preview Content
    ============================================================================= */
-/* line 363, ../scss/layouts/_editor.scss */
+
+/* commented out by patte to show preview as 
+   it would be rendered as normal content of page
 .entry-preview-content,
 .content-preview-content {
   font-size: 1.4em;
   line-height: 1.5em;
 }
-/* line 368, ../scss/layouts/_editor.scss */
 .entry-preview-content a,
 .content-preview-content a {
   color: #5ba4e5;
   text-decoration: underline;
 }
-/* line 372, ../scss/layouts/_editor.scss */
 .entry-preview-content p,
 .content-preview-content p {
   margin: 1.2em 0 1.6em;
 }
-/* line 374, ../scss/layouts/_editor.scss */
 .entry-preview-content p:first-of-type,
 .content-preview-content p:first-of-type {
   margin-top: 0;
 }
-/* line 378, ../scss/layouts/_editor.scss */
 .entry-preview-content h1,
 .content-preview-content h1 {
   font-size: 3em;
 }
-/* line 381, ../scss/layouts/_editor.scss */
 .entry-preview-content h2,
 .content-preview-content h2 {
   font-size: 2.2em;
 }
-/* line 384, ../scss/layouts/_editor.scss */
 .entry-preview-content h3,
 .content-preview-content h3 {
   font-size: 1.8em;
 }
-/* line 387, ../scss/layouts/_editor.scss */
 .entry-preview-content .btn,
 .content-preview-content .btn {
   text-decoration: none;
   color: #35393b;
 }
+*/
 /* line 391, ../scss/layouts/_editor.scss */
 .entry-preview-content .img-placeholder,
 .content-preview-content .img-placeholder {
