@@ -34,5 +34,7 @@ Template.post.events
         throwError error if error?
         Router.go 'post',
           slug: slug
+        ,
+          replaceState: true
       return false
     return true
