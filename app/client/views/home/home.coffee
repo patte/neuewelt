@@ -1,6 +1,9 @@
 Template.home.onCreated ->
   @subscribe "posts"
 
+Template.home.onRendered ->
+	document.title = "neue Welt"
+
 Template.home.helpers
   posts: ->
     if Roles.userIsInRole(Meteor.user(), 'admin')

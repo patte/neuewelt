@@ -8,6 +8,9 @@ Template.postTitle.onRendered ->
 Template.post.onCreated ->
   @subscribe("crumbsForPost", @data._id)
 
+Template.post.onRendered ->
+  document.title = @data.title
+
 Template.post.helpers
   post: ->
     @
