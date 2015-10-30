@@ -56,7 +56,10 @@ Template.crumbContent.onRendered ->
       manageAffixSeeLess trigger, element, expanded
 
 Template.crumbContent.onDestroyed ->
-  @$('.crumb-content').readmore('destroy')
+  crumbContent = @$('.crumb-content')
+  crumbContent.readmore('destroy')
+  id = crumbContent.attr('id')
+  $(window).unbind("scroll.#{id}")
 
 manageAffixSeeLess = (trigger, element, expanded)->
   expandedCrumb = $(element)
