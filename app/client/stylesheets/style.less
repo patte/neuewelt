@@ -22,11 +22,27 @@
     }
   }
 	.crumb-content {
-		.affixSeeLess {
+		.affixControls {
 			display: none;
 			position: fixed;
 			bottom: 0%;
-			right: 10px;
+			right: 0px;
+			// to avoid flickering because the i elements
+			// are not equally width and to force a break
+			width: 38px;
+			&:hover, &:focus {
+				text-decoration: none;
+			}
+			i {
+				display: block;
+				padding: 10px 5px 5px 10px;
+				&:last-child {
+					padding-bottom: 10px;
+				}
+			}
+			.scrollToTopOfCrumb {
+				display: none;
+			}
 		}
 	}
 }

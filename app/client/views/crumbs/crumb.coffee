@@ -30,7 +30,10 @@ Template.crumb.events
         throwError error if error?
     false
 
-  'click .affixSeeLess': (evt, template) ->
+  'click .scrollToTopOfCrumb': (evt, template) ->
+    $(window).scrollTop template.$('.crumb-content').offset().top
+
+  'click .seeLess': (evt, template) ->
     template.$('.crumb-content').readmore('toggle')
 
 
@@ -50,10 +53,10 @@ Template.crumbContent.onRendered ->
         # have multiple event handlers and remove them individually
         # http://stackoverflow.com/questions/12270769/unbinding-event-that-has-been-bound-mutliple-times
         $(window).bind "scroll.#{id}", (evt) ->
-          manageAffixSeeLess trigger, element, expanded
+          manageAffixControls trigger, element, expanded
       else
         $(window).unbind("scroll.#{id}")
-      manageAffixSeeLess trigger, element, expanded
+      manageAffixControls trigger, element, expanded
 
 Template.crumbContent.onDestroyed ->
   crumbContent = @$('.crumb-content')
@@ -61,7 +64,7 @@ Template.crumbContent.onDestroyed ->
   id = crumbContent.attr('id')
   $(window).unbind("scroll.#{id}")
 
-manageAffixSeeLess = (trigger, element, expanded)->
+manageAffixControls = (trigger, element, expanded)->
   expandedCrumb = $(element)
   if expandedCrumb.length > 0
     win = $(window)
@@ -70,8 +73,13 @@ manageAffixSeeLess = (trigger, element, expanded)->
     elem = expandedCrumb
     elemTop = elem.offset().top
     elemBottom = elemTop + elem.height()
-    affixSeeLess = expandedCrumb.find('.affixSeeLess')
+    affixControls = expandedCrumb.find('.affixControls')
+    scrollToTopOfCrumb = affixControls.find('.scrollToTopOfCrumb')
     if elemBottom >= winBottom and (elemTop+50) < winBottom
-      affixSeeLess.show()
+      affixControls.show()
+      if elemTop+10 < winTop
+        scrollToTopOfCrumb.show()
+      else
+        scrollToTopOfCrumb.hide()
     else
-      affixSeeLess.hide()
+      affixControls.hide()

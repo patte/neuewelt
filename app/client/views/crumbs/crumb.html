@@ -36,6 +36,9 @@
 <template name="crumbContent">
 <div class="crumb-content" id={{_id}}>
   {{#markdown}}{{content}}{{/markdown}}
-	<a class="affixSeeLess hoverOpaque" href="#">See less</a>
+	<a class="affixControls" href="#">
+		<i class="fa fa-lg fa-arrow-circle-up hoverOpaque scrollToTopOfCrumb"></i>
+		<i class="fa fa-lg fa-compress hoverOpaque seeLess"></i>
+	</a>
 </div>
 </template>
