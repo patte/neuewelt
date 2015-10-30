@@ -30,6 +30,9 @@ Template.crumb.events
         throwError error if error?
     false
 
+  'click .affixSeeLess': (evt, template) ->
+    template.$('.crumb-content').readmore('toggle')
+
 
 Template.crumbContent.onRendered ->
   #add bootstrap class table to tables
@@ -40,6 +43,32 @@ Template.crumbContent.onRendered ->
     moreLink: '<a href="#">See more</a>'
     lessLink: '<a href="#">See less</a>'
     collapsedHeight: 215
+    afterToggle: (trigger, element, expanded) ->
+      id = $(element).attr('id')
+      if expanded
+        # we use namespaced events to be able to
+        # have multiple event handlers and remove them individually
+        # http://stackoverflow.com/questions/12270769/unbinding-event-that-has-been-bound-mutliple-times
+        $(window).bind "scroll.#{id}", (evt) ->
+          manageAffixSeeLess trigger, element, expanded
+      else
+        $(window).unbind("scroll.#{id}")
+      manageAffixSeeLess trigger, element, expanded
 
 Template.crumbContent.onDestroyed ->
   @$('.crumb-content').readmore('destroy')
+
+manageAffixSeeLess = (trigger, element, expanded)->
+  expandedCrumb = $(element)
+  if expandedCrumb.length > 0
+    win = $(window)
+    winTop = win.scrollTop()
+    winBottom = winTop + win.height()
+    elem = expandedCrumb
+    elemTop = elem.offset().top
+    elemBottom = elemTop + elem.height()
+    affixSeeLess = expandedCrumb.find('.affixSeeLess')
+    if elemBottom >= winBottom and (elemTop+50) < winBottom
+      affixSeeLess.show()
+    else
+      affixSeeLess.hide()

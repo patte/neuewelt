@@ -34,7 +34,8 @@
 
 
 <template name="crumbContent">
-<div class="crumb-content">
+<div class="crumb-content" id={{_id}}>
   {{#markdown}}{{content}}{{/markdown}}
+	<a class="affixSeeLess hoverOpaque" href="#">See less</a>
 </div>
 </template>
