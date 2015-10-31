@@ -7,7 +7,8 @@ Template.crumb.helpers
 
 Template.crumb.events
   'click .edit': (evt) ->
-    Session.set 'editingCrumbId', @_id
+    if cancelCrumbEditing()
+      Session.set 'editingCrumbId', @_id
     false
 
   'click .save': (evt) ->
@@ -21,7 +22,7 @@ Template.crumb.events
     false
 
   'click .cancel': (evt) ->
-    Session.set 'editingCrumbId', null
+    cancelCrumbEditing()
     false
 
   'click .remove': (evt) ->
@@ -37,6 +38,20 @@ Template.crumb.events
     template.$('.crumb-content').readmore('toggle')
 
 
+@cancelCrumbEditing = ->
+  Tracker.nonreactive ->
+    editingCrumbId = Session.get 'editingCrumbId'
+    if editingCrumbId?
+      crumb = Crumbs.findOne editingCrumbId
+      md = Session.get('editor-markdown') #null if unchanged
+      if md? and crumb.content.valueOf() isnt md.valueOf() #content changed
+        $(window).scrollTop $("##{crumb._id}.crumb").offset().top
+        if !confirm("You edited the content of this crumb. Are you sure you don't want to save it?")
+          return false
+    Session.set 'editingCrumbId', null
+    return true
+  
+  
 Template.crumbContent.onRendered ->
   #add bootstrap class table to tables
   @$('table').addClass('table')

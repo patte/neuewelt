@@ -10,6 +10,16 @@ Template.post.onCreated ->
 
 Template.post.onRendered ->
   document.title = @data.title
+  $(window).on 'keydown', (evt) ->
+    if evt.keyCode is 27 #esc
+      cancelCrumbEditing()
+  $(window).on "beforeunload", ->
+    if !cancelCrumbEditing()
+      return "You have unsaved changes in a crumb!"
+
+Template.post.onDestroyed ->
+  $(window).off 'keydown'
+  $(window).off 'beforeunload'
 
 Template.post.helpers
   post: ->
@@ -24,14 +34,14 @@ Template.post.helpers
 Template.post.events
   'submit #createCrumb': (evt) ->
     evt.preventDefault()
-    Meteor.call "createCrumb", @_id, (error, _id)->
-      throwError error if error?
-      Session.set 'editingCrumbId', _id
+    if cancelCrumbEditing()
+      Meteor.call "createCrumb", @_id, (error, _id)->
+        throwError error if error?
+        Session.set 'editingCrumbId', _id
     false
 
   'keydown h1[contenteditable]': (evt) ->
-    #13 -> return key
-    if evt.keyCode is 13
+    if evt.keyCode is 13 #return key
       title = evt.target.innerText
       Meteor.call 'changePostTitle', @_id, title, (error, slug) ->
         throwError error if error?
