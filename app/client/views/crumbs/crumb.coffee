@@ -6,6 +6,16 @@ Template.crumb.helpers
     @content or ""
 
 Template.crumb.events
+  # intercept anchor clicks and
+  # and open files in a new window
+  'click a': (evt) ->
+    href = evt.target.href
+    if href.indexOf("http") > -1 || href.indexOf("files") > -1
+      evt.preventDefault()
+      window.open evt.target.href, "_blank"
+      return false
+    true
+		
   'click .edit': (evt) ->
     if cancelCrumbEditing()
       Session.set 'editingCrumbId', @_id

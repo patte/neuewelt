@@ -7,7 +7,7 @@ Router.configure
 #Router.onBeforeAction('dataNotFound')
 Router.onBeforeAction( ->
   AccountsEntry.signInRequired(this)	
-, {only: ["users"]})
+, {only: ["users", "files"]})
 
 previousPage = null
 Router.map ->
@@ -20,6 +20,14 @@ Router.map ->
     path: "users"
     waitOn: ->
       Meteor.subscribe('users')
+
+  @route "files",
+    path: "files"
+    waitOn: ->
+      [
+        Meteor.subscribe('files')
+        Meteor.subscribe('users')
+      ]
 
   @route "home",
     path: "home"

@@ -27,6 +27,12 @@ Meteor.publish "users", ->
       createdAt: 1
   )
 
+Meteor.publish "files", ->
+  if @userId? and Roles.userIsInRole @userId, 'admin'
+    Files.find()
+  else
+    @ready()
+    return 
 
 Meteor.publish "posts", ->
   if @userId? and Roles.userIsInRole @userId, 'admin'

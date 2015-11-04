@@ -55,8 +55,11 @@
           <a href="/sign-in">sign in</a>
           {{/if}}
           {{#if isInRole 'admin'}}
-            &nbsp;&nbsp;<a href="/users">
+            &nbsp;&nbsp;<a class="a-unstyled" href="/users">
             <i class="fa fa-user"></i> users
+            </a>
+            &nbsp;&nbsp;<a class="a-unstyled" href="/files">
+            <i class="fa fa-file"></i> files
             </a>
           {{/if}}
         </div>

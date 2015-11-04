@@ -1,0 +1,59 @@
+<template name="files">
+<div id="files">
+  <div class="page-header">
+    <h1>Files</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+			{{> reactiveTable collection=files settings=filesRTS}}
+    </div>
+  </div>
+</div>
+</template>
+
+<template name="fullscreenDropArea">
+<div class="modal-backdrop" id="dropArea">
+	<div class="message">
+		Drop files here!<br>
+		<i class="fa fa-lg fa-cloud-upload"></i>
+	</div>
+</div>
+</template>
+
+<template name="fileIconTableCell">
+<a class="text-color a-unstyled" href={{url}} target="_blank">
+	{{#if isImage}}
+		<img src="{{url}}" alt="{{name}}">
+	{{else}}
+		<i class="fa {{fileIcon this}}" style="font-size:50pt"></i>
+	{{/if}}
+</a>
+</template>
+
+<template name="filePublishedTableCell">
+{{#if metadata.published}}
+  <i class="fa fa-lg fa-circle text-success" title="published"></i>
+{{else}}
+  <i class="fa fa-lg fa-circle text-danger" title="unpublished"></i>
+{{/if}}
+</template>
+
+<template name="fileTableButtons">
+  <div class="btn-group">
+		<button class="btn btn-default" data-clipboard data-clipboard-text={{absoluteUrl}}{{url auth=false}} title="copy to clipboard">
+				<i class="fa fa-clipboard"></i>
+		</button>
+    {{#if metadata.published}}
+      <button class="btn btn-danger togglePublish" title="unpublish">
+        <i class="fa fa-lg fa-chain-broken"></i>
+      </button>
+    {{else}}
+      <button class="btn btn-success togglePublish" title="publish">
+        <i class="fa fa-lg fa-chain"></i>
+      </button>
+    {{/if}}
+		<button class="btn btn-danger remove" title="remove">
+				<i class="fa fa-remove"></i>
+		</button>
+  </div>
+</template>

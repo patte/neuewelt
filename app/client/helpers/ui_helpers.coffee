@@ -28,3 +28,6 @@ Template.registerHelper "fullDate", (date) ->
     return "today"
   else
     return date.format("DD.MM.YYYY")
+
+Template.registerHelper "absoluteUrl", ->
+	Meteor.absoluteUrl()

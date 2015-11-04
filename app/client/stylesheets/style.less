@@ -47,6 +47,26 @@
 	}
 }
 
+.fileTable {
+	img {
+		max-width: 80px;
+	}
+}
+
+#dropArea {
+	.message {
+		position: absolute;
+		width: 300px; //manually meassured from content
+		height: 150px;
+		margin-left: -150px; //margin is -0.5 * dimension
+		margin-top: -75px; 
+		top: 50%;
+		left: 50%;
+		text-align: center;
+		font-size: 40px;
+		opacity: 1.0;
+	}
+}
 
 ////////////////////////////////
 // misc
@@ -79,4 +99,18 @@
   &:hover {
     opacity: 1.0;
   }
+}
+
+.a-unstyled {
+	text-decoration: none;
+	&:hover, &:active {
+		text-decoration: none;
+	}
+}
+
+.text-color {
+	color: @text-color;	
+	&:hover, &:active {
+		color: @text-color;	
+	}
 }
