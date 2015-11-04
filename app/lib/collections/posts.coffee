@@ -62,6 +62,7 @@ Meteor.methods
 
   'togglePublishOfPost': (postId) ->
     checkIfAdmin()
+    check(postId, String)
 
     post = Posts.findOne
       _id: postId
@@ -73,6 +74,7 @@ Meteor.methods
 
   'decPostIndex': (postId) ->
     checkIfAdmin()
+    check(postId, String)
 
     post = Posts.findOne
       _id: postId
@@ -91,6 +93,7 @@ Meteor.methods
 
   'incPostIndex': (postId) ->
     checkIfAdmin()
+    check(postId, String)
 
     post = Posts.findOne
       _id: postId
