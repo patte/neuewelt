@@ -2,11 +2,11 @@
 <div class="crumb" id={{_id}}>
   {{#if isEditing}}
     <div class="editor-container">
-      <main class="editor">
-        <section class="entry-container">
+      <div class="editor-main editor">
+        <div class="entry-container">
           {{> GhostEditor content}}
-        </section>
-      </main>
+        </div>
+      </div>
     </div>
     <button type="button" class="btn btn-default save">
       Save
