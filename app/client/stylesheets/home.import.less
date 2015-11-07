@@ -1,0 +1,119 @@
+#home {
+	height: 100vh;
+	#background {
+		background-color: white;
+		overflow: hidden;
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		z-index: -10;
+		/*
+		.tint {
+			position: absolute;
+			background-color: rgba(0, 0, 0, 0.2);
+			opacity: 0;
+			height: 100%;
+			width: 100%;
+			z-index: -8;
+			transition: opacity 200ms ease-in-out;
+		}
+		.tint-open {
+			opacity: 1;
+		}
+		*/
+		img {
+			width: 50%;
+			z-index: -9;
+		}
+		#baum {
+			position: absolute;
+			margin-top: -10%;
+		}
+		#huhn {
+			position: absolute;
+			right: 0;
+			margin-top: 10%;
+		}
+	}
+	.home-body {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		font-family: Courier, monospace;
+		.content {
+			font-size: 1.5em;
+			width: 32em;
+			max-width: 100%;
+      background-color: white;
+			.brand {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				font-size: 2em;
+				width: 100%;
+				background-color: black;
+				color: white;
+				.title {
+					display: inline-block;
+					padding: 0.33em 0.66em;
+					color: white;
+				}
+				.drop {
+					display: inline-block;
+					padding: 0.33em 0.66em;
+					border-left: 2px solid white;
+					cursor: pointer;
+          i {
+            transform-origin: 50% 54%;
+          }
+				}
+			}
+			.project-list {
+				width: 100%;
+				.project-list-item {
+					display: block;
+					width: inherit;
+					padding: 0.33em 0.66em;
+					color: black;
+					border-top: 2px solid black;
+					&:first-child {
+						border-top: none;
+					}
+          .project-list-item-controls {
+            float: right;
+            i:not(:last-child) {
+              margin-right: 0.4em;
+            }
+          }
+				}
+        .add-project-item {
+					padding: 0.66em;
+					color: black;
+					border-top: 2px solid black;
+        }
+			}
+      .user-nav {
+        padding: 0em 1.0em 0.45em;
+        font-size: 0.8em;
+        a:not(:first-child) {
+          margin-left: 2em;
+        }
+      }
+		}
+		.super-quote-ha-ha-ha {
+			color: white;
+			border-top: 2px solid white;
+			font-size: 2em;
+			width: 24em;
+			padding: 10px;
+			max-width: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			p:nth-child(2) {
+				text-align: right;
+			}
+		}
+	}
+}

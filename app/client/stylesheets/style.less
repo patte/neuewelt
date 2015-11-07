@@ -1,71 +1,23 @@
+// this is the main styling file for this page
+// overwrite bootstrap variables in bootstrap/custom.bootstrap.import.less
 @import "bootstrap/custom.bootstrap.output.import.less";
-@import "simplex.import.less";
+@import "theme/simplex.import.less";
 
-@import "bs_sidedanv.import.less";
-@import "x_editable.import.less";
+// import less/css from vendored libs
+@import "lib/bs_sidedanv.import.less";
+@import "lib/x_editable.import.less";
 @import "lib/ghostdown.import.less";
 @import "lib/editor.import.less";
 
+// import styling for our views
+@import "home.import.less";
+@import "crumbs.import.less";
+@import "files.import.less";
 
-@font-size-base: 16px;
-@grid-float-breakpoint: 830px;
-
-.crumb {
-  &:not(:first-child) {
-    margin-top: 1em;
-  }
-  .container {
-    position: relative;
-    .controls {
-      position: absolute;
-      bottom: 2px;
-      right: 15px;
-    }
-  }
-	.crumb-content {
-		.affixControls {
-			display: none;
-			position: fixed;
-			bottom: 0%;
-			right: 0px;
-			// to avoid flickering because the i elements
-			// are not equally width and to force a break
-			width: 38px;
-			&:hover, &:focus {
-				text-decoration: none;
-			}
-			i {
-				display: block;
-				padding: 10px 5px 5px 10px;
-				&:last-child {
-					padding-bottom: 10px;
-				}
-			}
-			.scrollToTopOfCrumb {
-				display: none;
-			}
-		}
-	}
-}
-
-.fileTable {
-	img {
-		max-width: 80px;
-	}
-}
-
-#dropArea {
-	.message {
-		position: absolute;
-		width: 300px; //manually meassured from content
-		height: 150px;
-		margin-left: -150px; //margin is -0.5 * dimension
-		margin-top: -75px; 
-		top: 50%;
-		left: 50%;
-		text-align: center;
-		font-size: 40px;
-		opacity: 1.0;
+body {
+	margin: 0;
+	h2 {
+		border: none;
 	}
 }
 
@@ -81,6 +33,14 @@
 
 ////////////////////////////////
 // misc
+.truncate {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
 .page-header, .page-header-small {
   border-bottom: none;
 }
@@ -120,8 +80,8 @@
 }
 
 .text-color {
-	color: @text-color;	
+	color: @text-color;
 	&:hover, &:active {
-		color: @text-color;	
+		color: @text-color;
 	}
 }

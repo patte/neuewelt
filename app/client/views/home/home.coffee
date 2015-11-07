@@ -1,8 +1,13 @@
 Template.home.onCreated ->
   @subscribe "posts"
 
+firstHit = true
 Template.home.onRendered ->
-	document.title = "neue Welt"
+  document.title = "neue Welt"
+  if firstHit
+    firstHit = false
+  else
+    $('.drop').click()
 
 Template.home.helpers
   posts: ->
@@ -16,6 +21,15 @@ Template.home.helpers
         sort: {index: 1}
 
 Template.home.events
+  'click .drop': (evt) ->
+    #$('.tint').toggleClass('tint-open')
+    $('.projects').collapse('toggle')
+    drop = $('.drop i')
+    if drop.getRotationDegrees() > 0
+      $(".drop i").animateRotate null, 360, 500, "swing"
+    else
+      $(".drop i").animateRotate null, 180, 500, "swing"
+
   'submit #createPost': (evt) ->
     evt.preventDefault()
     title = evt.target.title.value

@@ -7,16 +7,13 @@
 
 @import "custom.bootstrap.default_colors.import.less";
 
-// patte
-@import "../simplex.variables.import.less";
+// overwrite variables with bootstrap theme
+@import "../theme/simplex.variables.import.less";
 
+// our overwrites of bootstrap vars
 @modal-backdrop-opacity: 0.5;
 
-//@modal-content-bg: rgb(92, 32, 64); //purple
-//@modal-content-bg: rgb(155, 147, 137); //light-brown
-
-@modal-content-bg: rgba(71, 73, 73, 0.65); //light-grey
-@modal-content-color: white;
-@modal-title-color: white;
-
 @text-muted: #6a6a6a;
+
+@font-size-base: 16px;
+@grid-float-breakpoint: 830px;

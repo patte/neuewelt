@@ -1,70 +1,77 @@
 <template name="home">
-<div id="home">
-  <div class="page-header">
-    <h1>Neue Welt</h1>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-md-6">
-      Read <a href="/post/about-us">about us</a>
-      <div class="projects">
-        <h2>Projects</h2>
-        {{#if Template.subscriptionsReady}} 
-          <div class="list-group">
+  <div id="home">
+    <div id="background">
+      <div class="tint"></div>
+      <img id="baum" src="/bg-baum.jpg">
+      <img id="huhn" src="/bg-huhn.jpg">
+    </div>
+    <div class="home-body">
+      <div class="content">
+
+        <div class="brand">
+          <div class="title">Neue Welt</div>
+          <div class="drop"><i class="fa fa-chevron-down"></i></div>
+        </div>
+
+        <div class="projects collapse">
+          {{#if Template.subscriptionsReady}}
+          <div class="project-list">
+
             {{#each posts}}
-              <a href="/post/{{slug}}" class="list-group-item">
-                {{title}}
-                {{#if isInRole 'admin'}}
-                  <span class="pull-right">
-                    <i class="fa fa-lg fa-trash remove"></i>&nbsp;&nbsp;
-                    {{#if published}}
-                      <i class="fa fa-lg fa-check-square-o togglePublish"></i>&nbsp;
-                    {{else}}
-                      <i class="fa fa-lg fa-square-o togglePublish" style="margin-right:2px;"></i>&nbsp;
-                    {{/if}}
-                    <i class="fa fa-lg fa-arrow-up moveUp"></i>&nbsp;
-                    <i class="fa fa-lg fa-arrow-down moveDown"></i>
-                  </span>
+            <a href="/post/{{slug}}" class="project-list-item a-unstyled text-color truncate">
+              {{title}}
+              {{#if isInRole 'admin'}}
+              <span class="project-list-item-controls">
+                <i title="remove" class="fa fa-trash remove"></i>
+                {{#if published}}
+                <i title="unpublish" class="fa fa-check-square-o togglePublish"></i>
+                {{else}}
+                <i title="publish" class="fa fa-square-o togglePublish" style="margin-right:0.55em;"></i>
                 {{/if}}
-              </a>
+                <i title="move up" class="fa fa-arrow-up moveUp"></i>
+                <i title="move down" class="fa fa-arrow-down moveDown"></i>
+              </span>
+              {{/if}}
+            </a>
             {{else}}
-              no projects
+            no projects
             {{/each}}
+
+            {{#if isInRole 'admin'}}
+            <form id="createPost" class="add-project-item">
+              <input type="text" class="form-control" name="title" placeholder="project title">
+            </form>
+            {{/if}}
           </div>
-          {{#if isInRole 'admin'}}
-            <div class="row">
-              <div class="col-xs-12 col-md-6">
-                <form id="createPost">
-                  <input type="text" class="form-control" name="title" placeholder="title">
-                  <button type="submit" class="btn btn-default">
-                    Create Project <i class="fa fa-plus"></i>
-                  </button>
-                </form>
-              </div>
-            </div>
-          {{/if}}
-        {{else}}
-          {{> spinner}}
-        {{/if}}
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <br>
-          {{#if currentUser}}
-          <a href="/sign-out">sign out</a>
           {{else}}
-          <a href="/sign-in">sign in</a>
+          {{> spinner}}
           {{/if}}
-          {{#if isInRole 'admin'}}
-            &nbsp;&nbsp;<a class="a-unstyled" href="/users">
-            <i class="fa fa-user"></i> users
+
+          {{#if currentUser}}
+          <div class="user-nav">
+            {{#if isInRole 'admin'}}
+            <a class="a-unstyled" href="/files">
+              <i class="fa fa-file"></i> files
             </a>
-            &nbsp;&nbsp;<a class="a-unstyled" href="/files">
-            <i class="fa fa-file"></i> files
+            <a class="a-unstyled" href="/users">
+              <i class="fa fa-user"></i> users
             </a>
+            {{/if}}
+            <a class="a-unstyled" href="/sign-out">
+              <i class="fa fa-sign-out"></i> sign out
+            </a>
+          </div>
           {{/if}}
         </div>
       </div>
+      <div class="super-quote-ha-ha-ha">
+        <p>
+        leuchtende augen durch utopische penetration und kritische naivität transdisziplinär denkender säugetiere
+        </p>
+        <p>
+        – institut für ideelle polygamie
+        </p>
+      </div>
     </div>
   </div>
-</div>
 </template>
