@@ -24,3 +24,7 @@ git clone https://github.com/patte/meteor-ghostdown
 ```
 
 
+Copyright and license
+-------
+Code and documentation copyright 2016 Patrick Recher. Code released under the GPLv3 license.
+Images created by Johanna Benz, copyright NZZ Campus.
