@@ -41,5 +41,5 @@ joshowens:accounts-entry-1.2
 jeremy:ghostdown
 aslagle:reactive-table
 cfs:standard-packages
-cfs:filesystem
 numeral:numeral
+cfs:gridfs

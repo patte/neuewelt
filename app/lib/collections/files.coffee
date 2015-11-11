@@ -1,8 +1,6 @@
 @Files = new (FS.Collection)('files',
   stores: [ 
-    new (FS.Store.FileSystem)('files', 
-      path: '~/neue_welt/files/'
-    ) 
+    new FS.Store.GridFS('files')
   ]
 )
 
