@@ -27,6 +27,13 @@ Template.files.helpers
       { key: 'buttons', label: '', tmpl: Template.fileTableButtons }
     ]
 
+Template.fileTableButtons.helpers
+  #cfs url starts with a slash, so we remove
+  #it from absoluteUrl here. Some browers
+  #get confused with two slashes
+  absoluteUrl: ->
+    Meteor.absoluteUrl().slice(0, -1)
+
 Template.fileTableButtons.events
   "click .togglePublish": (evt)->
     Meteor.call 'togglePublishOfFile', @_id, (error) ->
