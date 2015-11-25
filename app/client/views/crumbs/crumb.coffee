@@ -68,8 +68,8 @@ Template.crumbContent.onRendered ->
   #init readmore
   @$('.crumb-content').readmore('destroy')
   @$('.crumb-content').readmore
-    moreLink: '<a href="#">See more</a>'
-    lessLink: '<a href="#">See less</a>'
+    moreLink: '<a href="#"><i class="fa fa-lg fa-expand"></i></a>'
+    lessLink: '<a href="#"><i class="fa fa-lg fa-compress"></i></a>'
     collapsedHeight: 215
     afterToggle: (trigger, element, expanded) ->
       id = $(element).attr('id')
