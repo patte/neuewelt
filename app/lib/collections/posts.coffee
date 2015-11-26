@@ -129,3 +129,10 @@ Meteor.methods
       $inc: {index: -1}
     ,
       multi: true
+
+    #fix wrong indices
+    i = 0
+    Posts.find({}, {sort: {index: 1}}).forEach (p) ->
+      Posts.update p._id,
+        $set: {index: i}
+      i += 1

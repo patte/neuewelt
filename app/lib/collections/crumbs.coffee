@@ -103,3 +103,10 @@ Meteor.methods
       $inc: {index: -1}
     ,
       multi: true
+
+    #fix wrong indices
+    i = 0
+    Crumbs.find({postId: crumb.postId}, {sort: {index: 1}}).forEach (c) ->
+      Crumbs.update c._id,
+        $set: {index: i}
+      i += 1
