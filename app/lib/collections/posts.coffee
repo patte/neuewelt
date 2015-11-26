@@ -28,7 +28,7 @@ Meteor.methods
     throw new Meteor.Error(403, "a post with this title already exists") if post?
 
     index = Posts.find().count()
-    
+
     _id = Posts.insert
       title: title
       slug: slug
@@ -69,7 +69,7 @@ Meteor.methods
     throw new Meteor.Error(403, "post not found") unless post?
 
     Posts.update postId,
-      $set: 
+      $set:
         published: !post.published
 
   'decPostIndex': (postId) ->
@@ -85,10 +85,10 @@ Meteor.methods
     Posts.update
       index: post.index-1
     ,
-      $inc: {index: 1} 
+      $inc: {index: 1}
 
     Posts.update postId,
-      $inc: {index: -1} 
+      $inc: {index: -1}
 
 
   'incPostIndex': (postId) ->
