@@ -43,6 +43,7 @@ Meteor.methods
     return if crumb.index is 0
 
     Crumbs.update
+      postId: crumb.postId
       index: crumb.index-1
     ,
       $inc: {index: 1}
@@ -63,6 +64,7 @@ Meteor.methods
     return if crumb.index is numCrumbs-1
 
     Crumbs.update
+      postId: crumb.postId
       index: crumb.index+1
     ,
       $inc: {index: -1}
@@ -95,6 +97,7 @@ Meteor.methods
     Crumbs.remove crumbId
 
     Crumbs.update
+      postId: crumb.postId
       index: {$gt: crumb.index}
     ,
       $inc: {index: -1}
