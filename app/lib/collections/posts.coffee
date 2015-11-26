@@ -105,15 +105,27 @@ Meteor.methods
     Posts.update
       index: post.index+1
     ,
-      $inc: {index: -1} 
+      $inc: {index: -1}
 
     Posts.update postId,
-      $inc: {index: 1} 
+      $inc: {index: 1}
 
 
   'removePost': (postId) ->
     checkIfAdmin()
     check(postId, String)
+
+    post = Posts.findOne
+      _id: postId
+    throw new Meteor.Error(403, "post not found") unless post?
+
     Posts.remove postId
     Crumbs.remove
       postId: postId
+
+    Posts.update
+      index: {$gt: post.index}
+    ,
+      $inc: {index: -1}
+    ,
+      multi: true

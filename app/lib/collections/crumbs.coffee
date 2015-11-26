@@ -87,4 +87,16 @@ Meteor.methods
   'removeCrumb': (crumbId) ->
     checkIfAdmin()
     check(crumbId, String)
+
+    crumb = Crumbs.findOne
+      _id: crumbId
+    throw new Meteor.Error(403, "crumb with _id #{crumbId} not found") unless crumb?
+
     Crumbs.remove crumbId
+
+    Crumbs.update
+      index: {$gt: crumb.index}
+    ,
+      $inc: {index: -1}
+    ,
+      multi: true
