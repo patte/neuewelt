@@ -32,6 +32,44 @@ Meteor.methods
       index: index
     _id
 
+  'decCrumbIndex': (crumbId) ->
+    checkIfAdmin()
+    check(crumbId, String)
+
+    crumb = Crumbs.findOne
+      _id: crumbId
+    throw new Meteor.Error(403, "crumb not found") unless crumb?
+
+    return if crumb.index is 0
+
+    Crumbs.update
+      index: crumb.index-1
+    ,
+      $inc: {index: 1}
+
+    Crumbs.update crumbId,
+      $inc: {index: -1}
+
+
+  'incCrumbIndex': (crumbId) ->
+    checkIfAdmin()
+    check(crumbId, String)
+
+    crumb = Crumbs.findOne
+      _id: crumbId
+    throw new Meteor.Error(403, "crumb not found") unless crumb?
+
+    numCrumbs = Crumbs.find().count()
+    return if crumb.index is numCrumbs-1
+
+    Crumbs.update
+      index: crumb.index+1
+    ,
+      $inc: {index: -1}
+
+    Crumbs.update crumbId,
+      $inc: {index: 1}
+
 
   'saveCrumb': (crumbId, markdown) ->
     checkIfAdmin()
@@ -43,7 +81,7 @@ Meteor.methods
       _id: crumbId
     throw new Meteor.Error(403, "crumb with _id #{crumbId} not found") unless crumb?
 
-    Crumbs.update crumbId,	
+    Crumbs.update crumbId,
       $set: {content: markdown}
 
   'removeCrumb': (crumbId) ->

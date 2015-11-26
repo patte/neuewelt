@@ -41,6 +41,20 @@ Template.crumb.events
         throwError error if error?
     false
 
+  'click .moveUp': (evt) ->
+    evt.preventDefault()
+    evt.stopPropagation()
+    Meteor.call "decCrumbIndex", @_id, (error, id)->
+      throwError error if error?
+    false
+
+  'click .moveDown': (evt) ->
+    evt.preventDefault()
+    evt.stopPropagation()
+    Meteor.call "incCrumbIndex", @_id, (error, id)->
+      throwError error if error?
+    false
+
   'click .scrollToTopOfCrumb': (evt, template) ->
     $(window).scrollTop template.$('.crumb-content').offset().top
 

@@ -23,8 +23,10 @@
       {{/if}}
       {{#if isInRole 'admin'}}
         <div class="controls">
-          <i class="fa fa-lg fa-trash text-primary remove"></i>&nbsp;&nbsp;
-          <i class="fa fa-lg fa-edit text-primary edit"></i>
+          <i title="remove" class="fa fa-lg fa-trash text-primary remove"></i>&nbsp;&nbsp;
+          <i title="move up" class="fa fa-lg fa-arrow-up text-primary moveUp"></i>&nbsp;&nbsp;
+          <i title="move down" class="fa fa-lg fa-arrow-down text-primary moveDown"></i>&nbsp;&nbsp;
+          <i title="edit" class="fa fa-lg fa-edit text-primary edit"></i>
         </div>
       {{/if}}
     </div>
