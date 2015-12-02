@@ -37,9 +37,9 @@ random
 ejson
 spacebars
 check
-selaias:accounts-entry
 jeremy:ghostdown
 aslagle:reactive-table
 cfs:standard-packages
 numeral:numeral
 cfs:gridfs
+joshowens:accounts-entry
