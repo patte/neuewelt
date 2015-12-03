@@ -1,53 +1,35 @@
 #home {
-	height: 100vh;
-	#background {
-		background-color: white;
+	min-height: 100vh;
+	overflow: hidden;
+	background-image: url("/bg-kopf-baum.gif");
+	background-size: 1432px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	#bg {
 		overflow: hidden;
-		height: 100%;
-		width: 100%;
+
+		width: 2000px;
+		height: auto;
+		max-width: 150%;
 		position: absolute;
-		top: 0;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		z-index: -10;
-		/*
-		.tint {
-			position: absolute;
-			background-color: rgba(0, 0, 0, 0.2);
-			opacity: 0;
-			height: 100%;
-			width: 100%;
-			z-index: -8;
-			transition: opacity 200ms ease-in-out;
-		}
-		.tint-open {
-			opacity: 1;
-		}
-		*/
-		img {
-			width: 50%;
-			z-index: -9;
-		}
-		#baum {
-			position: absolute;
-			margin-top: -10%;
-		}
-		#huhn {
-			position: absolute;
-			right: 0;
-			margin-top: 10%;
-		}
 	}
+
 	.home-body {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		height: 100%;
+		min-height: 100vh;
 		font-family: @font-family-monospace;
 		.content {
 			font-size: 1.5em;
 			width: 32em;
 			max-width: 100%;
-      background-color: white;
+      		background-color: white;
 			.brand {
 				display: flex;
 				flex-direction: row;
@@ -116,4 +98,20 @@
 			}
 		}
 	}
+}
+@media screen and (max-width: 600px) {
+    #home {
+        background-image: url("/bg-mobile-lampenschirme.gif");
+		background-size: 100%;
+	    .home-body {
+			justify-content: flex-start;
+			align-items: flex-start;
+	    }
+    }
+
+	// .brand{
+	// 	position: absolute;
+	// 	top: 0;
+	// }
+
 }
