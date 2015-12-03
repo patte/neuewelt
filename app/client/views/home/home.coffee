@@ -3,7 +3,7 @@ Template.home.onCreated ->
 
 firstHit = true
 Template.home.onRendered ->
-  document.title = "neue Welt"
+  document.title = "NEUE WELT"
   if firstHit
     firstHit = false
   else
