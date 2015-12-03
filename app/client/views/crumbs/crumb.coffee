@@ -15,7 +15,7 @@ Template.crumb.events
       window.open evt.target.href, "_blank"
       return false
     true
-		
+
   'click .edit': (evt) ->
     if cancelCrumbEditing()
       Session.set 'editingCrumbId', @_id
@@ -74,16 +74,17 @@ Template.crumb.events
           return false
     Session.set 'editingCrumbId', null
     return true
-  
-  
+
+
 Template.crumbContent.onRendered ->
   #add bootstrap class table to tables
   @$('table').addClass('table')
   #init readmore
   @$('.crumb-content').readmore('destroy')
   @$('.crumb-content').readmore
-    moreLink: '<a href="#"><i class="fa fa-lg fa-expand"></i></a>'
-    lessLink: '<a href="#"><i class="fa fa-lg fa-compress"></i></a>'
+    # moreLink: '<a href="#"><i class="fa fa-lg fa-expand"></i></a>'
+    moreLink: '<a class="more-or-less" href="#"><i class="fa fa-2x fa-ellipsis-h"></i></a>'
+    lessLink: '<a class="more-or-less" href="#"><i class="fa fa-lg fa-compress"></i></a>'
     collapsedHeight: 215
     afterToggle: (trigger, element, expanded) ->
       id = $(element).attr('id')

@@ -1,4 +1,6 @@
 .crumb {
+    margin-bottom: 1em;
+
   &:not(:first-child) {
     margin-top: 1em;
   }
@@ -12,6 +14,10 @@
   }
   .crumb-content {
     font-size: 1.25em;
+    margin-bottom: 1em;
+    &[aria-expanded='false'] {
+        margin-bottom: 0;
+    }
     .affixControls {
       display: none;
       position: fixed;
@@ -34,12 +40,33 @@
         display: none;
       }
     }
-  }
-  .edit, .remove, .moveUp, .moveDown {
-    cursor: pointer;
-    opacity: 0.5;
-    &:hover {
-      opacity: 1.0;
+    // .less {
+    //     .more-or-less {
+    //         bottom: -3px;
+    //     }
+    // }
+    &[aria-expanded='false']:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 0;
+        background-image: linear-gradient(0deg, rgba(255, 255, 255, 1.0) 0%, rgba(255, 255, 255, 1.0) 1em, rgba(255, 255, 255, 0.0) 5em);
+    }
+    .edit, .remove, .moveUp, .moveDown {
+        cursor: pointer;
+        opacity: 0.5;
+        &:hover {
+          opacity: 1.0;
+        }
     }
   }
+}
+
+.more-or-less {
+    position: absolute;
+    z-index: 300;
+    bottom: 3px;
 }
