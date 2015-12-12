@@ -61,6 +61,10 @@ Template.crumb.events
   'click .seeLess': (evt, template) ->
     template.$('.crumb-content').readmore('toggle')
 
+  #expand a crumb when clicking on it's content
+  "click .crumb-content[aria-expanded='false']": (evt, template) ->
+    template.$('.crumb-content').readmore('toggle')
+
 
 @cancelCrumbEditing = ->
   Tracker.nonreactive ->
