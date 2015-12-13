@@ -45,3 +45,7 @@ dump.rdb
 /Pods
 /**/Pods
 *.xcworkspace
+
+
+# ignore artwork in temp
+/temp
