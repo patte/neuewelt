@@ -1,3 +1,14 @@
+_quoteCounter = 0
+_quotes = _.shuffle [
+  body: "Wir müssen die Zukunft als Werkzeug nutzen, nicht als Sofa"
+  footer: "#thinkaboutit #deep"
+,
+  body: "Die einzig ernst zu nehmende Wissenschaft ist für mich die Science-Fiction"
+  footer: "Jacques Lacan"
+,
+  body: "Wir sind realistisch und fordern das Unmögliche"
+  footer: "Irgend so ein Utopist"
+]
 Template.home.onCreated ->
   @subscribe "posts"
 
@@ -19,6 +30,12 @@ Template.home.helpers
         published: true
       ,
         sort: {index: 1}
+
+  quote: ->
+    q = _quotes[_quoteCounter]
+    _quoteCounter += 1
+    _quoteCounter = 0 if _quoteCounter >= _quotes.length
+    q
 
 Template.home.events
   'click .drop': (evt) ->

@@ -60,12 +60,10 @@
         </div>
       </div>
       <div class="super-quote-ha-ha-ha">
-        <p>
-        Wir müssen die Zukunft als Werkzeug nutzen, nicht als Sofa
-        </p>
-        <p>
-        #thinkaboutit #yolo
-        </p>
+        {{#with quote}}
+        <p>{{body}}</p>
+        <p>{{footer}}</p>
+        {{/with}}
       </div>
     </div>
   </div>
