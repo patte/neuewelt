@@ -62,8 +62,9 @@ Template.crumb.events
     template.$('.crumb-content').readmore('toggle')
 
   #expand a crumb when clicking on it's content
-  "click .crumb-content[aria-expanded='false']": (evt, template) ->
-    template.$('.crumb-content').readmore('toggle')
+  "click .crumb-content": (evt, template) ->
+    if getSelection().toString().length is 0
+      template.$('.crumb-content').readmore('toggle')
 
 
 @cancelCrumbEditing = ->
