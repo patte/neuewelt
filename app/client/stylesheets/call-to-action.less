@@ -1,0 +1,47 @@
+.cta {
+  position: absolute;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 1em;
+  right: 5%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgba(217, 35, 15, 0.95);
+  box-shadow: 5px 0 0 black;
+  color: white;
+  transform: rotate(30deg);
+  transition: all 200ms ease;
+
+  &:active {
+    box-shadow: none;
+    transform: rotate(30deg) translate(5px, 0);
+  }
+  &:hover {
+    color: white;
+  }
+}
+.cta__half {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+.cta__top {
+  justify-content: flex-end;
+}
+.cta__bottom {
+  padding-top: 1em;
+  border-top: 2px solid currentColor;
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 600px) {
+  .cta {
+    position: relative;
+    top: 10px;
+    right: 0;
+    align-self: center;
+  }
+}
