@@ -1,0 +1,10 @@
+{
+  "name": "neuewelt",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.7"
+  }
+}
