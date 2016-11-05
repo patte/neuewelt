@@ -1,11 +1,7 @@
 <template name="errors">
-  <div class="row errors">    
-	  <div class="col-md-12">    
-      {{#each errors}}
-        {{> error}}
-      {{/each}}
-    </div>
-  </div>
+  {{#each errors}}
+    {{> error}}
+  {{/each}}
 </template>
 
 <template name="error">
