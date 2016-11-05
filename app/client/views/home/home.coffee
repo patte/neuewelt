@@ -8,6 +8,15 @@ _quotes = _.shuffle [
 ,
   body: "Wir sind realistisch und fordern das Unmögliche"
   footer: "Irgend so ein Utopist"
+,
+  body: "Je m'en vais chercher le grand peut-être"
+  footer: "François Rabelais"
+,
+  body: "The Internet became part of my life early enough to be the coolest thing ever and late enough that I have memories of Geocities before it became a howling desert rolling with tumbleweed and pixels that don’t have the decency to decay"
+  footer: "Laurie Penny"
+,
+  body: "Arguing that you don't care about the right to privacy because you have nothing to hide is no different than saying you don't care about free speech because you have nothing to say"
+  footer: "Eduard Snowden"
 ]
 Template.home.onCreated ->
   @subscribe "posts"
