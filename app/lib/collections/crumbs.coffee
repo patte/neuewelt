@@ -110,3 +110,18 @@ Meteor.methods
       Crumbs.update c._id,
         $set: {index: i}
       i += 1
+
+  'toggleReadmoreForCrumb': (crumbId) ->
+    checkIfAdmin()
+    check(crumbId, String)
+
+    crumb = Crumbs.findOne
+      _id: crumbId
+    throw new Meteor.Error(403, "crumb not found") unless crumb?
+
+    if crumb.noReadmore
+      Crumbs.update crumbId,
+        $unset: noReadmore: ""
+    else
+      Crumbs.update crumbId,
+        $set: noReadmore: true

@@ -23,6 +23,11 @@
       {{/if}}
       {{#if isInRole 'admin'}}
         <div class="controls">
+          {{#if noReadmore}}
+            <i title="enable collapsing" class="fa fa-lg text-primary fa-square-o toggleReadmore" style="margin-right:3px;"></i>&nbsp;&nbsp;
+          {{else}}
+            <i title="disable collapsing" class="fa fa-lg text-primary fa-check-square-o toggleReadmore"></i>&nbsp;&nbsp;
+          {{/if}}
           <i title="remove" class="fa fa-lg fa-trash text-primary remove"></i>&nbsp;&nbsp;
           <i title="move up" class="fa fa-lg fa-arrow-up text-primary moveUp"></i>&nbsp;&nbsp;
           <i title="move down" class="fa fa-lg fa-arrow-down text-primary moveDown"></i>&nbsp;&nbsp;

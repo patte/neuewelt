@@ -55,6 +55,13 @@ Template.crumb.events
       throwError error if error?
     false
 
+  'click .toggleReadmore': (evt) ->
+    evt.preventDefault()
+    evt.stopPropagation()
+    Meteor.call "toggleReadmoreForCrumb", @_id, (error, id)->
+      throwError error if error?
+    false
+
   'click .scrollToTopOfCrumb': (evt, template) ->
     $(window).scrollTop template.$('.crumb-content').offset().top
 
@@ -102,14 +109,18 @@ applyReadMore = (template) ->
 
 Template.crumbContent.onRendered ->
   #add bootstrap class table to tables
-  @$('table').addClass('table')
-  #init readmore
-  applyReadMore(@)
-  #reload readmore to catch loaded images
   template = @
-  Meteor.setTimeout ->
+  @autorun ->
+    template.$('table').addClass('table')
+    template.$('.crumb-content').readmore('destroy')
+    data = Template.currentData()
+    if !data.noReadmore
+      #init readmore
       applyReadMore(template)
-  , 1000
+      #reload readmore to catch loaded images
+      Meteor.setTimeout ->
+        applyReadMore(template)
+      , 1000
 
 Template.crumbContent.onDestroyed ->
   crumbContent = @$('.crumb-content')
