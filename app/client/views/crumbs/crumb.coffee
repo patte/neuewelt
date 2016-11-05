@@ -81,12 +81,9 @@ Template.crumb.events
     return true
 
 
-Template.crumbContent.onRendered ->
-  #add bootstrap class table to tables
-  @$('table').addClass('table')
-  #init readmore
-  @$('.crumb-content').readmore('destroy')
-  @$('.crumb-content').readmore
+applyReadMore = (template) ->
+  template.$('.crumb-content').readmore('destroy')
+  template.$('.crumb-content').readmore
     # moreLink: '<a href="#"><i class="fa fa-lg fa-expand"></i></a>'
     moreLink: '<a class="more-or-less" href="#"><i class="fa fa-2x fa-ellipsis-h"></i></a>'
     lessLink: '<a class="more-or-less" href="#"><i class="fa fa-lg fa-compress"></i></a>'
@@ -102,6 +99,17 @@ Template.crumbContent.onRendered ->
       else
         $(window).unbind("scroll.#{id}")
       manageAffixControls trigger, element, expanded
+
+Template.crumbContent.onRendered ->
+  #add bootstrap class table to tables
+  @$('table').addClass('table')
+  #init readmore
+  applyReadMore(@)
+  #reload readmore to catch loaded images
+  template = @
+  Meteor.setTimeout ->
+      applyReadMore(template)
+  , 1000
 
 Template.crumbContent.onDestroyed ->
   crumbContent = @$('.crumb-content')
