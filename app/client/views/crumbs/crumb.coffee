@@ -110,17 +110,14 @@ applyReadMore = (template) ->
 Template.crumbContent.onRendered ->
   #add bootstrap class table to tables
   template = @
+  if !@data.noReadmore
+    @$('.crumb-content').imagesLoaded().always( (instance) -> applyReadMore(template))
   @autorun ->
     template.$('table').addClass('table')
     template.$('.crumb-content').readmore('destroy')
     data = Template.currentData()
     if !data.noReadmore
-      #init readmore
       applyReadMore(template)
-      #reload readmore to catch loaded images
-      Meteor.setTimeout ->
-        applyReadMore(template)
-      , 1000
 
 Template.crumbContent.onDestroyed ->
   crumbContent = @$('.crumb-content')
